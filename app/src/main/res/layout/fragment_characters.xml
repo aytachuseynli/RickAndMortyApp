@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3A0564"
+    tools:context=".ui.fragments.CharactersFragment">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/irishgroverregular"
+        android:text="Rick &amp; Morty"
+        android:textColor="@color/white"
+        android:textSize="44sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/fandomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/irishgroverregular"
+        android:text="fandom"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_corners"
+        app:startIconDrawable="@drawable/ic_search"
+        app:layout_constraintTop_toBottomOf="@id/fandomText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Search...">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filterView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="196dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#D9D9D9"
+                android:textColor="#6B007C"
+                android:text="Gender Types"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/ic_down"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#D9D9D9"
+                android:textColor="#6B007C"
+                android:text="Classifications "
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/ic_down"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#D9D9D9"
+                android:textColor="#6B007C"
+                android:text="Status"
+                android:drawableRight="@drawable/ic_down"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCharacters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/filterView"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="238dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="vertical"
+        app:spanCount="2"
+        tools:listitem="@layout/item_character"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
