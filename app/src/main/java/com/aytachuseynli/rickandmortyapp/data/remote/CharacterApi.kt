@@ -12,6 +12,7 @@ interface CharacterApi {
         @Query("page")page:Int,
         @Query("name")name : String = "",
         @Query("status") status: String = "",
-        @Query("gender") gender: String = ""
+        @Query("gender") gender: String = "",
+        @Query("species") species: String = ""
     ): Response<Characters>
 }

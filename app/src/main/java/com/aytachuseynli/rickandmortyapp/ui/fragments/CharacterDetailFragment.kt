@@ -1,27 +1,56 @@
 package com.aytachuseynli.rickandmortyapp.ui.fragments
 
+import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aytachuseynli.rickandmortyapp.R
+import com.aytachuseynli.rickandmortyapp.data.entity.ResultData
 import com.aytachuseynli.rickandmortyapp.databinding.FragmentCharacterDetailBinding
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-
 class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
-    private var _binding: FragmentCharacterDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentCharacterDetailBinding
+    private val args: CharacterDetailFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentCharacterDetailBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentCharacterDetailBinding.bind(view)
 
-        // Your fragment initialization code here
+        val character = arguments?.getSerializable("character") as? ResultData
+        if (character != null) {
+            populateCharacterDetails(character)
+        }
+
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun populateCharacterDetails(character: ResultData) {
+        binding.apply {
+            detailName.text = character.name
+            statusTxt.text = character.status
+            speciesTxt.text = character.species
+            typeTxt.text = character.type
+            originTxt.text = character.origin?.name
+
+            Glide.with(requireContext())
+                .load(character.image)
+                .into(detailImg)
+        }
     }
+
+
 }

@@ -10,19 +10,20 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
-class CharacterRepository @Inject constructor(private val characterApi: CharacterApi) {
-
-
-    fun getCharacters(): Flow<PagingData<ResultData>> {
+class CharacterRepository @Inject constructor(private val characterApi: CharacterApi ) {
+    fun getFilteredCharacter(
+        name :String = "" ,
+        gender:String ="" ,
+        status :String="" ,
+        species: String=""
+    ):Flow<PagingData<ResultData>>{
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
-                enablePlaceholders = false,
-                maxSize = 200
+                maxSize = 50
             ),
-            pagingSourceFactory = { CharacterPagingSource(characterApi) }
+            pagingSourceFactory = { CharacterPagingSource(characterApi , name , gender, status, species) }
         ).flow
     }
-
 
 }

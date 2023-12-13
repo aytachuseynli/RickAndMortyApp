@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -14,14 +15,27 @@ import javax.inject.Singleton
 class AppModule {
     @Singleton
     @Provides
-    fun provideRetrofit() =
-        Retrofit.Builder().baseUrl("https://rickandmortyapi.com/api/")
-            .addConverterFactory(
-                GsonConverterFactory.create()
-            ).build()
+    fun provideRetrofit(okHttpClient: OkHttpClient) =
+        Retrofit.Builder()
+            .baseUrl("https://rickandmortyapi.com/api/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit) = retrofit.create(CharacterApi::class.java)
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient
+            .Builder()
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideApi(retrofit: Retrofit): CharacterApi {
+        return retrofit.create(CharacterApi::class.java)
+    }
 
 }

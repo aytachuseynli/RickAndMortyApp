@@ -30,16 +30,16 @@
         android:text="Rick Sanchez"
         android:textSize="44sp"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
         android:textColor="@color/white"
         android:fontFamily="@font/irishgroverregular"
         app:layout_constraintTop_toBottomOf="@id/backBtn"/>
 
     <ImageView
         android:id="@+id/detailImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:src="@drawable/rick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/detailImg"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="40dp"
         android:gravity="left"
         android:orientation="vertical">
 
@@ -61,6 +61,7 @@
             android:layout_height="wrap_content"
             android:text="Gender: Male"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/interfont"
             android:textColor="@color/white"/>
 
@@ -69,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Status: Alive"
+            android:textStyle="bold"
             android:textSize="20sp"
             android:fontFamily="@font/interfont"
             android:textColor="@color/white"/>
@@ -79,6 +81,7 @@
             android:layout_height="wrap_content"
             android:text="Species: Human"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/interfont"
             android:textColor="@color/white"/>
 
@@ -88,6 +91,7 @@
             android:layout_height="wrap_content"
             android:text="Type: Person-person"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/interfont"
             android:textColor="@color/white"/>
 
@@ -97,6 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Origin: C-137"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/interfont"
             android:textColor="@color/white"/>
 
