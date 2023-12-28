@@ -31,11 +31,15 @@ class CharacterAdapter(private val listener: OnCharacterClickListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(character: ResultData) {
+
             Glide.with(binding.root)
                 .load(character.image)
                 .into(binding.characterImg)
+
+
             binding.characterName.text = character.name
             binding.characterSpecie.text = character.species
+
             when(character.gender){
                 "Female"-> binding.characterGender.setImageResource(R.drawable.ic_female)
                 "Male"-> binding.characterGender.setImageResource(R.drawable.ic_male)
@@ -49,6 +53,9 @@ class CharacterAdapter(private val listener: OnCharacterClickListener) :
             }
             binding.characterImg.transitionName = character.name
         }
+
+
+
     }
 
     companion object {

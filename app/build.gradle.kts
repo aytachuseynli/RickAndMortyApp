@@ -81,7 +81,6 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil:2.2.2")
-//    implementation("io.coil-kt:coil-svg:1.2.0")
 
 
     //Paging
@@ -89,7 +88,6 @@ dependencies {
 
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
-//    kapt ("com.github.bumptech.glide:compiler:4.12.0")
 
     //SwipeRefresh layout
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
@@ -103,6 +101,3 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.1")
 }
 
-//kapt {
-//    correctErrorTypes = true
-//}

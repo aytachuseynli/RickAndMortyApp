@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.aytachuseynli.rickandmortyapp.R
 import com.aytachuseynli.rickandmortyapp.data.entity.ResultData
 import com.aytachuseynli.rickandmortyapp.databinding.FragmentCharacterDetailBinding
@@ -27,6 +28,19 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        arguments?.let {
+            with(binding) {
+                detailImg.load(it.getString("image"))
+                detailName.text = it.getString("name")
+                genderTxt.text = it.getString("gender")
+                statusTxt.text = it.getString("status")
+                speciesTxt.text = it.getString("species")
+                typeTxt.text = it.getString("type")
+                originTxt.text = it.getString("origin")
+            }
+        }
 
         val character = arguments?.getSerializable("character") as? ResultData
         if (character != null) {

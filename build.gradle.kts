@@ -7,9 +7,8 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.4")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.49")
-//        classpath("com.android.tools.build:gradle:7.1.3")
 
     }
 }
